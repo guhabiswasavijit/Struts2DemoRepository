@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="DroolIntegration" default="war" xmlns:rsel="antlib:org.apache.tools.ant.types.resources.selectors">
+    <property name="build.dir" value="target"/>
+    <property name="hibernateJars" value="/Users/avijit.guhabiswas/workspace/binaries/lib/" />
+    <property name="strutsJars" value="/Users/avijit.guhabiswas/Downloads/struts-6.1.1/lib/" />
+    <property name="warName" value="${build.dir}/Struts2Demo.war" />
+    <property name="webJars" value="WebRoot/WEB-INF/lib" />
+    <path id="project.classpath">
+        <fileset dir="${strutsJars}">
+            <include name="spring-tx-5.3.23.jar"></include>
+            <include name="asm-analysis-9.2.jar"></include>
+            <include name="asm-commons-9.2.jar"></include>
+            <include name="asm-tree-9.2.jar"></include>
+            <include name="classworlds-1.1.jar"></include>
+            <include name="struts2-rest-plugin-6.1.1.jar"></include>
+            <include name="commons-beanutils-1.9.4.jar"></include>
+            <include name="commons-collections-3.2.2.jar"></include>
+            <include name="slf4j-api-1.7.32.jar"></include>
+            <include name="struts2-spring-plugin-6.1.1.jar"></include>
+            <include name="commons-digester-2.1.jar"></include>
+            <include name="spring-aop-5.3.23.jar"></include>
+            <include name="commons-digester3-3.2.jar"></include>
+            <include name="spring-beans-5.3.23.jar"></include>
+            <include name="struts2-tiles-plugin-6.1.1.jar"></include>
+            <include name="commons-fileupload-1.4.jar"></include>
+            <include name="spring-context-5.3.23.jar"></include>
+            <include name="struts2-velocity-plugin-6.1.1.jar"></include>
+            <include name="commons-io-2.9.0.jar"></include>
+            <include name="spring-core-5.3.23.jar"></include>
+            <include name="tiles-api-3.0.8.jar"></include>
+            <include name="commons-lang3-3.10.jar"></include>
+            <include name="spring-expression-5.3.23.jar"></include>
+            <include name="tiles-autotag-core-runtime-1.2.jar"></include>
+            <include name="commons-logging-1.2.jar"></include>
+            <include name="spring-jcl-5.3.23.jar"></include>
+            <include name="tiles-core-3.0.8.jar"></include>
+            <include name="commons-text-1.10.0.jar"></include>
+            <include name="tiles-el-3.0.8.jar"></include>
+            <include name="dwr-3.0.2-RELEASE.jar"></include>
+            <include name="spring-web-5.3.23.jar"></include>
+            <include name="tiles-freemarker-3.0.8.jar"></include>
+            <include name="freemarker-2.3.31.jar"></include>
+            <include name="struts2-bean-validation-plugin-6.1.1.jar"></include>
+            <include name="tiles-jsp-3.0.8.jar"></include>
+            <include name="google-collections-1.0.jar"></include>
+            <include name="struts2-cdi-plugin-6.1.1.jar"></include>
+            <include name="tiles-ognl-3.0.8.jar"></include>
+            <include name="google-gxp-0.2.4-beta.jar"></include>
+            <include name="struts2-config-browser-plugin-6.1.1.jar"></include>
+            <include name="tiles-request-api-1.0.7.jar"></include>
+            <include name="hamcrest-core-1.3.jar"></include>
+            <include name="struts2-convention-plugin-6.1.1.jar"></include>
+            <include name="tiles-request-freemarker-1.0.7.jar"></include>
+            <include name="jackson-annotations-2.13.4.jar"></include>
+            <include name="struts2-core-6.1.1.jar"></include>
+            <include name="tiles-request-jsp-1.0.7.jar"></include>
+            <include name="jackson-core-2.13.4.jar"></include>
+            <include name="struts2-dwr-plugin-6.1.1.jar"></include>
+            <include name="tiles-request-servlet-1.0.7.jar"></include>
+            <include name="jackson-databind-2.13.4.2.jar"></include>
+            <include name="struts2-embeddedjsp-plugin-6.1.1.jar"></include>
+            <include name="tiles-servlet-3.0.8.jar"></include>
+            <include name="javassist-3.29.0-GA.jar"></include>
+            <include name="struts2-gxp-plugin-6.1.1.jar"></include>
+            <include name="tiles-template-3.0.8.jar"></include>
+            <include name="jcl-over-slf4j-1.7.6.jar"></include>
+            <include name="struts2-jasperreports-plugin-6.1.1.jar"></include>
+            <include name="jcommander-1.78.jar"></include>
+            <include name="struts2-javatemplates-plugin-6.1.1.jar"></include>
+            <include name="validation-api-2.0.1.Final.jar"></include>
+            <include name="jquery-3.5.1.jar	"></include>
+            <include name="struts2-jfreechart-plugin-6.1.1.jar"></include>
+            <include name="velocity-engine-core-2.3.jar"></include>
+            <include name="json-simple-3.0.2.jar"></include>
+            <include name="struts2-json-plugin-6.1.1.jar"></include>
+            <include name="velocity-tools-generic-3.1.jar"></include>
+            <include name="log4j-api-2.19.0.jar"></include>
+        </fileset>
+        <fileset dir="${hibernateJars}">
+            <include name="xwork-core-2.3.1.2.jar"></include>
+            <include name="antlr-2.7.2.jar"/>
+            <include name="aopalliance-1.0.jar"/>
+            <include name="cglib-2.1_3.jar"/>
+            <include name="hibernate-3.2.6.ga.jar"/>
+            <include name="hibernate-annotations-3.3.1.GA.jar"/>
+            <include name="hibernate-commons-annotations-3.0.0.ga.jar"/>
+            <include name="hibernate-entitymanager-3.3.2.GA.jar"/>
+            <include name="hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+            <include name="hibernate-validator-4.0.2.GA.jar"/>
+            <include name="javassist-3.0.jar"/>
+            <include name="javassist-3.15.0-GA.jar"/>
+            <include name="jta-1.1.jar"/>
+            <include name="mysql-connector-java-5.0.8.jar"/>
+            <include name="persistence-api-1.0.jar"/>
+        </fileset>
+    </path>
+    <target name="init">
+        <mkdir dir="${build.dir}/classes"/>
+        <macrodef name="copyFromPath">
+            <attribute name="todir"/>
+            <attribute name="refid"/>
+            <element name="nested-resource-selectors" optional="yes" implicit="true"/>
+            <sequential>
+                <mkdir dir="@{todir}" taskname="copyFromPath"/>
+                <copy todir="@{todir}" taskname="copyFromPath">
+                    <restrict>
+                        <path refid="@{refid}"/>
+                    </restrict>
+                    <flattenmapper/>
+                </copy>
+            </sequential>
+        </macrodef>
+        <copyFromPath refid="project.classpath" todir="${webJars}"></copyFromPath>
+    </target>
+    <target name="clean">
+        <delete includeemptydirs="true">
+            <fileset dir="${build.dir}/classes" includes="**/*"/>
+        </delete>
+        <delete file="${warName}"/>
+    </target>
+    <target name="compile" depends="init" unless="skip.compile" >
+        <javac srcdir="src" destdir="${build.dir}/classes" includeDestClasses="true" source="11" target="11">
+            <classpath  refid="project.classpath"/>
+        </javac>
+    </target>
+    <target name="war" depends="compile">
+        <war destfile="${warName}" webxml="WebRoot/WEB-INF/web.xml">
+            <fileset dir="WebRoot/WEB-INF/">
+                <include name="applicationContext.xml"/>
+                <include name="tiles-def.xml"/>
+            </fileset>
+            <fileset dir="WebRoot/">
+                <include name="alia.jsp"></include>
+                <include name="body.jsp"></include>
+                <include name="footer.jsp"></include>
+                <include name="header.jsp"></include>
+                <include name="madhuri.jsp"></include>
+                <include name="mainTemplate.jsp"></include>
+                <include name="menu.jsp"></include>
+                <include name="success.jsp"></include>
+                <include name="users.jsp"></include>
+            </fileset>
+            <lib dir="${webJars}">
+            </lib>
+            <classes dir="${build.dir}/classes"/>
+        </war>
+    </target>
+</project>
