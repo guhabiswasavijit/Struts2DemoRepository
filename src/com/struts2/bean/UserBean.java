@@ -1,41 +1,47 @@
 package com.struts2.bean;
 
 
-public class UserBean {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import java.util.Collection;
+
+public class UserBean implements UserDetails {
 	private String userName;
-	private Long userAge;
-	private String userGender;
-	private String userJob;
-	private String[] userHobbies;
-	public String getUserName() {
-		return userName;
+	private String password;
+
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return null;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	@Override
+	public String getPassword() {
+		return null;
 	}
-	public Long getUserAge() {
-		return userAge;
+
+	@Override
+	public String getUsername() {
+		return null;
 	}
-	public void setUserAge(Long userAge) {
-		this.userAge = userAge;
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return false;
 	}
-	public String getUserGender() {
-		return userGender;
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return false;
 	}
-	public void setUserGender(String userGender) {
-		this.userGender = userGender;
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return false;
 	}
-	public String getUserJob() {
-		return userJob;
+
+	@Override
+	public boolean isEnabled() {
+		return false;
 	}
-	public void setUserJob(String userJob) {
-		this.userJob = userJob;
-	}
-	public String[] getUserHobbies() {
-		return userHobbies;
-	}
-	public void setUserHobbies(String[] userHobbies) {
-		this.userHobbies = userHobbies;
-	}
-	
 }

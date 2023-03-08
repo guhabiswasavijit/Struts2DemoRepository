@@ -8,4 +8,5 @@ public interface UserDao {
 	void saveUser(User user);
 	List<User> getUserList();
 	boolean loginUser(String userName,String password);
+	User findUserByName(String userName);
 }

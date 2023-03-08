@@ -33,5 +33,10 @@ public class UserDaoImpl implements UserDao {
 		cb.add(Restrictions.eq("password", password));
 		return !cb.list().isEmpty();
 	}
+	public User findUserByName(String userName) {
+		Criteria cb = sessionFactory.getCurrentSession().createCriteria(User.class);
+		cb.add(Restrictions.eq("userName", userName));
+		return (User) cb.uniqueResult();
+	}
 
 }

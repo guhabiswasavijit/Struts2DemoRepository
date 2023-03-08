@@ -1,77 +1,23 @@
 package com.struts2.model;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Set;
+import javax.persistence.*;
 
 @Entity
-@Table(name="User")
+@Table(name="users")
 public class User implements Serializable {
-
 	private static final long serialVersionUID = 1L;
-	
 	@Id  
-	@GeneratedValue(strategy=GenerationType.AUTO)  
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long userId;
 	@Column(name="username")
 	private String userName;
 	@Column(name="password")
 	private String password;
-	@Column(name="age")
-	private Long userAge;
-	@Column(name="gender")
-	private String userGender;
-	@Column(name="jobtype")
-	private String userJobType;
-	@Column(name="Hobbies")
-	private String userHobbies;
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public Long getUserId() {
-		return userId;
-	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public Long getUserAge() {
-		return userAge;
-	}
-	public void setUserAge(Long userAge) {
-		this.userAge = userAge;
-	}
-	public String getUserGender() {
-		return userGender;
-	}
-	public void setUserGender(String userGender) {
-		this.userGender = userGender;
-	}
-	public String getUserJobType() {
-		return userJobType;
-	}
-	public void setUserJobType(String userJobType) {
-		this.userJobType = userJobType;
-	}
-	public String getUserHobbies() {
-		return userHobbies;
-	}
-	public void setUserHobbies(String userHobbies) {
-		this.userHobbies = userHobbies;
-	}
-	
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+	@JoinTable(name = "user_roles",joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 }
