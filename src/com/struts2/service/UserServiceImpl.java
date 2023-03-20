@@ -1,18 +1,17 @@
 package com.struts2.service;
 
-import java.util.List;
+import com.struts2.dao.UserDao;
+import com.struts2.model.Role;
 import com.struts2.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import com.struts2.dao.UserDao;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Service("userService")
@@ -34,24 +33,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public boolean loginUser(String userName, String password) {
-		String encoded = new BCryptPasswordEncoder().encode(password);
-
-		if(userDao.loginUser(userName,password)){
-			return true;
-		}else{
-			throw new RuntimeException("Login failed");
-		}
-	}
-
-	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		final User user = userDao.findUserByName(userName);
 		if (user == null) {
 			throw new UsernameNotFoundException(userName);
 		}
-		UserDetails userDtls = org.springframework.security.core.userdetails.User.withUsername(user.getEmail()).password(user.getPassword()).authorities("USER").build();
+		UserDetails userDtls = org.springframework.security.core.userdetails.User.withUsername(user.getUserName())
+				               .password(user.getPassword())
+				               .authorities(user.getRoles())
+				               .build();
 		return userDtls;
+	}
+
+	@Override
+	public Set<Role> loadUserRole() {
+		final Set<Role> roleSet = new HashSet<Role>();
+		List<Role> roles = userDao.loadRole();
+		roles.forEach(role -> roleSet.add(role));
+		return roleSet;
 	}
 }

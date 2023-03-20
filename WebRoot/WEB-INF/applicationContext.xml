@@ -57,15 +57,15 @@
 		<security:intercept-url  pattern="/admin/**" access="hasRole('ADMIN')" />
 		<security:intercept-url  pattern="/user/**" access="hasAnyRole('USER', 'ADMIN')" />
 		<security:form-login
-				login-page="/customLogin.jsp"
-				login-processing-url="/appLogin"
-				username-parameter="username"
+				login-page="login"
+				login-processing-url="/login"
+				username-parameter="userName"
 				password-parameter="password"
-				default-target-url="/user"/>
+				default-target-url="mainTemplate"/>
 		<security:logout
-				logout-url="/appLogout"
-				logout-success-url="/customLogin.jsp"/>
-		<security:access-denied-handler error-page="/error"/>
+				logout-url="/logout"
+				logout-success-url="login"/>
+		<security:access-denied-handler error-page="error"/>
 	</security:http>
 	<security:authentication-manager>
 		<security:authentication-provider ref="paytmAuthenticationProvider" />

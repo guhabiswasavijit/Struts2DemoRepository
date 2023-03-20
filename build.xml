@@ -7,6 +7,8 @@
     <property name="webJars" value="WebRoot/WEB-INF/lib" />
     <path id="project.classpath">
         <fileset dir="${strutsJars}">
+            <include name="log4j-1.2.17.jar"></include>
+            <include name="lombok-1.18.26.jar"></include>
             <include name="spring-tx-5.3.23.jar"></include>
             <include name="asm-analysis-9.2.jar"></include>
             <include name="asm-commons-9.2.jar"></include>

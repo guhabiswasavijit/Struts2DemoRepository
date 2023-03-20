@@ -5,28 +5,18 @@
         <welcome-file>login</welcome-file>
     </welcome-file-list>
     <context-param>
-	   <param-name>
-	      org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG
-	   </param-name>
-	   <param-value>
-	      /WEB-INF/tiles-def.xml
-	   </param-value>
+	   <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+	   <param-value>/WEB-INF/tiles-def.xml</param-value>
    </context-param>
    <listener>
-      <listener-class>
-         org.springframework.web.context.ContextLoaderListener
-      </listener-class>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
    </listener>
    <listener>
-       <listener-class>
-        org.apache.struts2.tiles.StrutsTilesListener
-       </listener-class>
+       <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
    </listener>
    <filter>
         <filter-name>struts2</filter-name>
-        <filter-class>
-           org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
-        </filter-class>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>struts2</filter-name>

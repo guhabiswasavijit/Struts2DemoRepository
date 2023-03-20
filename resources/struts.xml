@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
  
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
@@ -9,10 +7,34 @@
     <constant name="struts.custom.i18n.resources" value="myapp" />
 	
 	<package name="user" extends="struts-default" namespace="/">
+        <global-results>
+            <result name="error" type="tiles">errorTemplate</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.RuntimeException" result="error"></exception-mapping>
+        </global-exception-mappings>
         <result-types>
         	<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
        </result-types>
-        <action name="user" class="user" method="execute">
+        <interceptors>
+            <interceptor-stack name="appDefaultStack">
+                <interceptor-ref name="defaultStack">
+                    <param name="exception.logEnabled">true</param>
+                    <param name="exception.logLevel">INFO</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="appDefaultStack" />
+        <action name="login" class="com.struts2.action.LoginAction" method="execute">
+            <result name="success" type="tiles">mainTemplate</result>
+        </action>
+        <action name="logout" class="com.struts2.action.LogOutAction" method="execute">
+            <result name="success" type="tiles">login</result>
+        </action>
+        <action name="addUser" class="com.struts2.action.RegisterUserAction" method="execute">
+            <result name="user" type="tiles">addUser</result>
+        </action>
+        <action name="listUsers" class="user" method="execute">
             <result name="user" type="tiles">mainTemplate</result>
         </action>
         <action name="*menu" class="user" method="{1}">

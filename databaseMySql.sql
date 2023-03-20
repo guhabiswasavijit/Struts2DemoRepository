@@ -21,3 +21,6 @@ create table users(
   CONSTRAINT  fk_role_id FOREIGN KEY (`role_id`) REFERENCES roles (`id`)
   );
   
+INSERT INTO roles(rolename) VALUES ('ADMIN');
+INSERT INTO roles(rolename) VALUES ('USER');
+

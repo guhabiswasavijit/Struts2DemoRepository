@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE tiles-definitions PUBLIC
-   "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-   "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
 
@@ -14,6 +12,11 @@
       <put-attribute name="footer"   value="/footer.jsp"/>
    </definition>
 
+    <definition name="errorTemplate" extends="mainTemplate">
+        <put-attribute name="title"  value="This is Gorgeous"/>
+        <put-attribute name="body"   value="/error.jsp"/>
+    </definition>
+
    <definition name="login" extends="mainTemplate">
       <put-attribute name="title"  value="This is Gorgeous"/>
       <put-attribute name="body"   value="/login.jsp"/>
@@ -24,14 +27,9 @@
       <put-attribute name="body"   value="/users.jsp"/>
    </definition>
 
-   <definition name="heaven" extends="mainTemplate">
+  <definition name="addUser" extends="mainTemplate">
       <put-attribute name="title"  value="This is Gorgeous"/>
-      <put-attribute name="body"   value="/heaven.jsp"/>
-   </definition>
-
-   <definition name="waterfall" extends="mainTemplate">
-      <put-attribute name="title"  value="This is chilling"/>
-      <put-attribute name="body"   value="/waterfall.jsp"/>
+      <put-attribute name="body"   value="/addUser.jsp"/>
    </definition>
    
    <definition name="success" extends="mainTemplate">

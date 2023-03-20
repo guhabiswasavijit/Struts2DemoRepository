@@ -1,11 +1,18 @@
 package com.struts2.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.*;
 
 @Entity
 @Table(name="users")
+@Getter
+@Setter
+@ToString
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id  
