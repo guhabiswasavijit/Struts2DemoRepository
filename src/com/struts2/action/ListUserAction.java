@@ -1,28 +1,22 @@
 package com.struts2.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.opensymphony.xwork2.ActionSupport;
+import com.struts2.bean.UserBean;
 import com.struts2.model.User;
 import com.struts2.service.UserService;
-import com.struts2.utils.CommonUtility;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.struts2.bean.UserBean;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
-
-
-public class UserAction extends ActionSupport{
-
-	private static final long serialVersionUID = 1L;
-	
-	@Autowired
-	private UserBean userBean;
-	@Autowired
+import lombok.extern.slf4j.Slf4j;
+import java.util.ArrayList;
+import java.util.List;
+@Slf4j
+public class ListUserAction extends ActionSupport{
 	private UserService userService;
 	private List<UserBean> users;
+	public ListUserAction(UserService i_userService){
+		this.userService = i_userService;
+	}
 
 	public String execute()	{
+		log.info("Executing ListUserAction");
 		List<User> users = userService.getUserList();
 		final List<UserBean> usrLst = new ArrayList<>();
 		this.setUsers(usrLst);

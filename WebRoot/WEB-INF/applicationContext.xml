@@ -14,9 +14,7 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security-6.0.xsd">
 	
-	<context:component-scan base-package="com.dineshonjava.struts2" />
-	
-	<!-- Database Configuration Start here-->
+	<context:component-scan base-package="com.struts2" />
 	<context:property-placeholder location="classpath:database.properties"/>
 	<tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
@@ -40,19 +38,31 @@
 	        </props>
 	      </property>
 	</bean>
-	
+	<bean class="com.struts2.dao.UserDaoImpl" id="userDao">
+		<constructor-arg name="sessionFactory" ref="sessionFactory"></constructor-arg>
+	</bean>
 	 <bean class="org.springframework.orm.hibernate3.HibernateTransactionManager" id="hibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	 </bean>
 	 <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder"></bean>
-	 <bean class="com.struts2.service.UserServiceImpl" id="userDetailsService"></bean>
-	
+	 <bean class="com.struts2.service.UserServiceImpl" id="userDetailsService">
+		 <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+	 </bean>
 	<bean id="paytmAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
 		<property name="passwordEncoder" ref="passwordEncoder"></property>
 		<property name="userDetailsService" ref="userDetailsService"></property>
 	</bean>
-	<bean id="user" class="com.struts2.action.UserAction"/>
-    <bean id="userBean" class="com.struts2.bean.UserBean"/>
+	<bean id="listUserAction" class="com.struts2.action.ListUserAction">
+		<constructor-arg name="userService" ref="userDetailsService"></constructor-arg>
+	</bean>
+	<bean id="loginAction" class="com.struts2.action.LoginAction">
+		<constructor-arg name="authenticationProvider" ref="paytmAuthenticationProvider"></constructor-arg>
+	</bean>
+	<bean id="registerUserAction" class="com.struts2.action.RegisterUserAction">
+		<constructor-arg name="userService" ref="userDetailsService"></constructor-arg>
+		<constructor-arg name="passwordEncoder" ref="passwordEncoder"></constructor-arg>
+	</bean>
+
 	<security:http>
 		<security:intercept-url  pattern="/admin/**" access="hasRole('ADMIN')" />
 		<security:intercept-url  pattern="/user/**" access="hasAnyRole('USER', 'ADMIN')" />

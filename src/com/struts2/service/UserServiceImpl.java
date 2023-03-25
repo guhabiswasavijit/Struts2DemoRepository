@@ -15,14 +15,15 @@ import java.util.Set;
 
 
 @Service("userService")
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true) 
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class UserServiceImpl implements UserService {
-
-	@Autowired
 	private UserDao userDao;
+	public UserServiceImpl(UserDao i_userDao){
+		this.userDao = i_userDao;
+	}
 	
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)  
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void saveUser(User user) {
 		userDao.saveUser(user);
 	}

@@ -4,21 +4,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.struts2.model.Role;
 import com.struts2.model.User;
 import com.struts2.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.Set;
-import org.apache.log4j.Logger;
 
+@Slf4j
 public class RegisterUserAction extends ActionSupport{
-    private static final Logger logger = Logger.getLogger(RegisterUserAction.class);
-    @Autowired
     private UserService userService;
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     private Set<Role> userRoles;
     private String userName;
     private String password;
+
+    public RegisterUserAction(UserService i_userService,BCryptPasswordEncoder i_passwordEncoder){
+        this.userService = i_userService;
+        this.passwordEncoder = i_passwordEncoder;
+    }
 
     public String getUserName() {
         return userName;
@@ -38,11 +40,11 @@ public class RegisterUserAction extends ActionSupport{
     public String execute()	{
         userRoles = userService.loadUserRole();
         userRoles.forEach(role ->{
-            logger.info("Roles loaded"+role.toString());
+            log.info("Roles loaded"+role.toString());
         });
         if(!StringUtils.isEmpty(userName) && !StringUtils.isEmpty(password)){
-            logger.info("Called login action userName:"+userName);
-            logger.info("Called login action password:"+password);
+            log.info("Called login action userName:"+userName);
+            log.info("Called login action password:"+password);
             String encodedPassword = passwordEncoder.encode(password);
             User user = new User();
             user.setUserName(userName);

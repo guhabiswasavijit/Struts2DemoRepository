@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project name="DroolIntegration" default="war" xmlns:rsel="antlib:org.apache.tools.ant.types.resources.selectors">
+<project name="Strut2Demo" default="war" xmlns:rsel="antlib:org.apache.tools.ant.types.resources.selectors">
     <property name="build.dir" value="target"/>
     <property name="hibernateJars" value="/Users/avijit.guhabiswas/workspace/binaries/lib/" />
     <property name="strutsJars" value="/Users/avijit.guhabiswas/Downloads/struts-6.1.1/lib/" />
@@ -7,7 +7,7 @@
     <property name="webJars" value="WebRoot/WEB-INF/lib" />
     <path id="project.classpath">
         <fileset dir="${strutsJars}">
-            <include name="log4j-1.2.17.jar"></include>
+            <include name="spring-security-core-5.3.13.RELEASE.jar"></include>
             <include name="lombok-1.18.26.jar"></include>
             <include name="spring-tx-5.3.23.jar"></include>
             <include name="asm-analysis-9.2.jar"></include>
@@ -79,6 +79,8 @@
             <include name="log4j-api-2.19.0.jar"></include>
         </fileset>
         <fileset dir="${hibernateJars}">
+            <include name="logback-core-1.2.6.jar"></include>
+            <include name="logback-classic-1.2.6.jar"></include>
             <include name="xwork-core-2.3.1.2.jar"></include>
             <include name="antlr-2.7.2.jar"/>
             <include name="aopalliance-1.0.jar"/>

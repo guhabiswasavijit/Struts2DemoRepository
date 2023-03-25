@@ -3,3 +3,4 @@ target/
 .DS_Store
 WebRoot/WEB-INF/lib/
 Struts2Hibernate3Spring3Tile2Integration.iml
+lib/
