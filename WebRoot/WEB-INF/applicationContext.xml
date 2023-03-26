@@ -28,6 +28,7 @@
 		 <property name="annotatedClasses">
 	  		<list>
 	   			<value>com.struts2.model.User</value>
+				<value>com.struts2.model.Role</value>
 	 		 </list>
 	 	</property>
 	 	<property name="hibernateProperties">
@@ -57,6 +58,10 @@
 	</bean>
 	<bean id="loginAction" class="com.struts2.action.LoginAction">
 		<constructor-arg name="authenticationProvider" ref="paytmAuthenticationProvider"></constructor-arg>
+	</bean>
+	<bean id="logoutAction" class="com.struts2.action.LogOutAction">
+	</bean>
+	<bean id="menuAction" class="com.struts2.action.MenuAction">
 	</bean>
 	<bean id="registerUserAction" class="com.struts2.action.RegisterUserAction">
 		<constructor-arg name="userService" ref="userDetailsService"></constructor-arg>

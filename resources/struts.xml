@@ -25,22 +25,22 @@
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="appDefaultStack" />
-        <action name="login" class="com.struts2.action.LoginAction" method="execute">
+        <action name="login" class="loginAction" method="execute">
             <result name="success" type="tiles">mainTemplate</result>
         </action>
-        <action name="logout" class="com.struts2.action.LogOutAction" method="execute">
-            <result name="success" type="tiles">login</result>
+        <action name="logout" class="logoutAction" method="execute">
+            <result name="success" type="tiles">loginTemplate</result>
         </action>
-        <action name="addUser" class="com.struts2.action.RegisterUserAction" method="execute">
-            <result name="user" type="tiles">addUser</result>
+        <action name="addUser" class="registerUserAction" method="execute">
+            <result name="user" type="tiles">addUserTemplate</result>
         </action>
-        <action name="listUsers" class="user" method="execute">
-            <result name="user" type="tiles">mainTemplate</result>
+        <action name="listUsers" class="listUserAction" method="execute">
+            <result name="user" type="tiles">listUsersTemplate</result>
         </action>
-        <action name="*menu" class="user" method="{1}">
-            <result name="madhuri" type="tiles">madhuri</result>
-            <result name="alia" type="tiles">alia</result>
-            <result name="addUser" type="tiles">mainTemplate</result>
+        <action name="*Menu" class="menuAction" method="{1}">
+            <result name="heaven" type="tiles">heavenTemplate</result>
+            <result name="waterfall" type="tiles">waterfallTemplate</result>
+            <result name="addUser" type="tiles">addUserTemplate</result>
         </action>
     </package>
  </struts>
