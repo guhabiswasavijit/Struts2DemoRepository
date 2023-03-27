@@ -32,10 +32,11 @@
             <result name="success" type="tiles">loginTemplate</result>
         </action>
         <action name="addUser" class="registerUserAction" method="execute">
-            <result name="user" type="tiles">addUserTemplate</result>
+            <result name="addUser" type="tiles">addUserTemplate</result>
+            <result name="success" type="tiles">successTemplate</result>
         </action>
         <action name="listUsers" class="listUserAction" method="execute">
-            <result name="user" type="tiles">listUsersTemplate</result>
+            <result name="listUsers" type="tiles">listUsersTemplate</result>
         </action>
         <action name="*Menu" class="menuAction" method="{1}">
             <result name="heaven" type="tiles">heavenTemplate</result>

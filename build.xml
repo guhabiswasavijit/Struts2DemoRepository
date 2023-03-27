@@ -134,15 +134,18 @@
                 <include name="tiles-def.xml"/>
             </fileset>
             <fileset dir="WebRoot/">
-                <include name="alia.jsp"></include>
+                <include name="login.jsp"></include>
                 <include name="body.jsp"></include>
                 <include name="footer.jsp"></include>
                 <include name="header.jsp"></include>
-                <include name="madhuri.jsp"></include>
+                <include name="heaven.jsp"></include>
+                <include name="waterfall.jsp"></include>
                 <include name="mainTemplate.jsp"></include>
                 <include name="menu.jsp"></include>
                 <include name="success.jsp"></include>
                 <include name="users.jsp"></include>
+                <include name="addUser.jsp"></include>
+                <include name="error.jsp"></include>
             </fileset>
             <lib dir="${webJars}">
             </lib>
