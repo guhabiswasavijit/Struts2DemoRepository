@@ -7,6 +7,7 @@
     <property name="webJars" value="WebRoot/WEB-INF/lib" />
     <path id="project.classpath">
         <fileset dir="${strutsJars}">
+            <include name="spring-security-config-5.3.13.RELEASE.jar"></include>
             <include name="spring-security-core-5.3.13.RELEASE.jar"></include>
             <include name="lombok-1.18.26.jar"></include>
             <include name="spring-tx-5.3.23.jar"></include>
@@ -129,10 +130,7 @@
     </target>
     <target name="war" depends="compile">
         <war destfile="${warName}" webxml="WebRoot/WEB-INF/web.xml">
-            <fileset dir="WebRoot/WEB-INF/">
-                <include name="applicationContext.xml"/>
-                <include name="tiles-def.xml"/>
-            </fileset>
+            <webinf dir="WebRoot/WEB-INF" />
             <fileset dir="WebRoot/">
                 <include name="login.jsp"></include>
                 <include name="body.jsp"></include>
